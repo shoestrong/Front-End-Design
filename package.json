@@ -1,6 +1,6 @@
 {
-  "name": "Front-End-Design",
-  "version": "1.0.0",
+  "name": "front-end-design",
+  "version": "2.0.0",
   "description": "Front-end design tips",
   "main": "index.js",
   "scripts": {
