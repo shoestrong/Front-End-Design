@@ -51,11 +51,11 @@ const morsecode = {
 // Z,Y,X,W,V,U,T,S,R,Q, P, O, N, M, L, K, J, I, H, G, F, E, D, C, B, A
 // 生成A-Z
 const renderA2Z = () => {
-  let arr = [];
+  let arr = []
   for (let i = 65; i < 91; i++) {
-    arr.push(String.fromCharCode(i));
+    arr.push(String.fromCharCode(i))
   }
-  return arr;
+  return arr
 }
 
 // 反正A-Z
@@ -64,44 +64,44 @@ const renderZ2A = () => {
 }
 
 // 摩丝密码转换字母
-function morse2word(morse) {
-  const morsearr = /\//.test(morse) ? morse.split('/') : [];
-  let wordarr = [];
-  let word = '';
+function morse2word (morse) {
+  const morsearr = /\//.test(morse) ? morse.split('/') : []
+  let wordarr = []
+  let word = ''
   for (let i = 0; i < morsearr.length; i++) {
     for (let j in morsecode) {
       if (morsearr[i] == morsecode[j]) {
-        wordarr[i] = j;
+        wordarr[i] = j
       }
     }
   }
   for (let i = 0; i < wordarr.length; i++) {
-    word += wordarr[i] + '';
+    word += wordarr[i] + ''
   }
-  return word;
+  return word
 }
 
 // 字母转换摩丝密码
-function word2morse(word) {
-  let morsearr = [];
-  let morse = '';
+function word2morse (word) {
+  let morsearr = []
+  let morse = ''
   for (let i = 0; i < word.length; i++) {
     for (let j in morsecode) {
       if (word[i] == j) {
-        morsearr[i] = morsecode[j];
+        morsearr[i] = morsecode[j]
       }
     }
   }
   for (let i = 0; i < morsearr.length; i++) {
-    morse += morsearr[i] + '/';
+    morse += morsearr[i] + '/'
   }
-  return morse;
+  return morse
 }
 
 // 编译摩斯密码
-function encodeMorse(str) {
-  if (!str) return;
-  let newStr = '';
+function encodeMorse (str) {
+  if (!str) return
+  let newStr = ''
   for (let i = 0; i < str.length; i++) {
     if (isNaN(str[i])) {
       newStr += 'F' + atbashCipher(str[i].charCodeAt().toString())
@@ -113,10 +113,10 @@ function encodeMorse(str) {
 }
 
 // 解析摩斯密码
-function decodeMorse(morse) {
-  let newMorse = '';
+function decodeMorse (morse) {
+  let newMorse = ''
   morse.split('F').map(r => {
-    if (!r) return;
+    if (!r) return
     if (r.length !== 4) {
       newMorse += String.fromCharCode(r)
     } else {
@@ -127,9 +127,9 @@ function decodeMorse(morse) {
 }
 
 // 埃特巴什码
-function atbashCipher(str) {
-  let atbash = '';
-  let str2UpperCase = str.toUpperCase();
+function atbashCipher (str) {
+  let atbash = ''
+  let str2UpperCase = str.toUpperCase()
   for (let i = 0; i < str2UpperCase.length; i++) {
     if (renderA2Z().includes(str2UpperCase[i])) {
       atbash += renderZ2A()[renderA2Z().indexOf(str2UpperCase[i])]
@@ -149,9 +149,3 @@ export const enMorse = (str) => {
 export const deMorse = (str) => {
   return decodeMorse(morse2word(str))
 }
-
-
-// console.log(word2morse('F963UF91XXF59Y9F6211F6765F4V86'))
-// console.log(word2morse(encodeMorse('好好学习天2ss3天向上AssC')))
-
-// console.log(decodeMorse(morse2word('..-./..---/..---/----./-----/----./..-./..---/..---/----./-----/----./..-./..---/...--/...--/----./---../..-./..---/-----/-----/-..../....-/..-./..---/..---/---../..---/...../..-./...../-----/..-./.----/.----/...../..-./.----/.----/...../..-./...../.----/..-./..---/..---/---../..---/...../..-./..---/.----/...../..---/.----/..-./.----/----./----./--.../---../..-./-..../...../..-./.----/.----/...../..-./.----/.----/...../..-./-..../--.../')))

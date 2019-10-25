@@ -1,4 +1,4 @@
-# combination-algorithm 组合算法
+# combination 组合算法
 
 > 解决能匹配所有字符的一个组合
 

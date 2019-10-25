@@ -1,5 +1,6 @@
-console.time('test0')
-function qSort (arr) {
+// console.time('test0')
+export const quickSort = function (...arr) {
+  // console.log(arr)
   if (arr.length == 0) {
     return []
   }
@@ -13,13 +14,13 @@ function qSort (arr) {
       right.push(arr[i])
     }
   }
-  return [...qSort(left), pivot, ...qSort(right)]
+  return [...quickSort(...left), pivot, ...quickSort(...right)]
 }
-console.log(qSort([9, 4, 10, 3, 1, 1, 0, 10, 8, 3, 9, 9, 4, 10, 10, 9, 9, 9, 1, 0]))
-console.timeEnd('test0')
+// console.log(quickSort([9, 4, 10, 3, 1, 1, 0, 10, 8, 3, 9, 9, 4, 10, 10, 9, 9, 9, 1, 0]))
+// console.timeEnd('test0')
 
-console.time('test1')
-function qSort3 (arr) { // 三路快排
+// console.time('test1')
+export const quickSortBest = function (...arr) { // 三路快排
   if (arr.length == 0) {
     return []
   }
@@ -36,7 +37,8 @@ function qSort3 (arr) { // 三路快排
       right.push(arr[i])
     }
   }
-  return [...qSort3(left), ...center, ...qSort3(right)]
+  return [...quickSortBest(...left), ...center, ...quickSortBest(...right)]
 }
-console.log('结果为', qSort3([9, 4, 10, 3, 1, 1, 0, 10, 8, 3, 9, 9, 4, 10, 10, 9, 9, 9, 1, 0]))
-console.timeEnd('test1')
+// console.log('结果为', quickSort3([9, 4, 10, 3, 1, 1, 0, 10, 8, 3, 9, 9, 4, 10, 10, 9, 9, 9, 1, 0]))
+// console.timeEnd('test1')
+
