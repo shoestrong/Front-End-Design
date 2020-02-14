@@ -1,5 +1,7 @@
 import { enMorse, deMorse } from './index'
 
+const xmorse = require('./xmorse');
+
 // console.log(enMorse('好学习Good study'))
 // console.log(deMorse('.-./..---/..---/----./-----/----./..-./..---/..---/----./-----/----./..-./..---/...--/...--/----./---../..-./..---/-----/-----/-..../....-/..-./--.../.----/..-./.----/.----/.----/..-./.----/.----/.----/..-./.----/-----/-----/..-./...--/..---/..-./.----/.----/...../..-./.----/.----/-..../..-./.----/.----/--.../..-./.----/-----/-----/..-./.----/..---/.----/'))
 
@@ -8,13 +10,23 @@ const chalk = require('chalk')
 const choices = [
   {
     name: '编码',
-    handle: (...r) => enMorse(...r),
+    handle: (...r) => xmorse.encode(...r),
     value: 1
   },
   {
     name: '解码',
-    handle: (...r) => deMorse(...r),
+    handle: (...r) => xmorse.decode(...r),
     value: 2
+  },
+  {
+    name: '埃特巴什码-编码',
+    handle: (...r) => enMorse(...r),
+    value: 3
+  },
+  {
+    name: '埃特巴什码-解码',
+    handle: (...r) => deMorse(...r),
+    value: 4
   }
 ]
 
